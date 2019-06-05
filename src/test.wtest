@@ -1,0 +1,29 @@
+import profesionales.*
+import universidad.*
+import empresa.*
+
+
+describe "test universidades"{
+	
+	const unsam = new Universidad( provincia = "Buenos Aires", honorariosRecomendados = 3500)
+	const uniro = new Universidad( provincia = "Santa Fe", honorariosRecomendados = 2800)
+	const unico = new Universidad( provincia = "Corrientes", honorariosRecomendados = 4200)
+	const unahur = new Universidad( provincia = "Buenos Aires", honorariosRecomendados = 8800)
+	
+	const juana = new ProfesionalVinculado( universidad = uniro)
+	const melina = new ProfesionalAsociado( universidad = unico)
+	const rocio = new ProfesionalLibre( universidad = unahur, honorarios = 5000, provincias = #{"Santa Fe", "Cordoba", "Buenos Aires"})
+	const luciana = new ProfesionalLibre( universidad = uniro, honorarios = 3200, provincias = #{"Santa Fe", "Entre Rios"})
+	
+	const empresaSA = new Empresas(profesionales = [juana, melina, rocio, luciana], honorarioDeReferencia = 3500)
+	
+	test "profesionales en" {
+	
+		assert.equals(2, empresaSA.cuantos(uniro))
+		
+
+	}
+
+
+
+}
